@@ -1,20 +1,20 @@
-// components/home/HomePage.jsx
-import { Link } from "react-router-dom";
+// File: pages/HomePage.jsx
+import HeroSection from "./home/HeroSection.jsx";
+import FeatureSection from "../components/home/FeatureSection";
+import AboutSection from "../components/home/AboutSection";
+import BrandSection from "../components/home/BrandSection";
+import ContactSection from "../components/home/ContactSection";
+import FAQSection from "../components/home/FAQSection";
 
 export default function HomePage() {
   return (
-    <div className="text-center py-20 px-6">
-      <h1 className="text-4xl font-bold mb-4 text-indigo-700">Welcome to PropertyRental</h1>
-      <p className="text-gray-600 text-lg mb-8">
-        Sewa properti berbasis blockchain. Aman, cepat, transparan.
-      </p>
-
-      <Link
-        to="/explore"
-        className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md text-lg transition"
-      >
-        Mulai Jelajahi
-      </Link>
+    <div className="px-6 py-30 space-y-50">
+      <HeroSection />
+      <AboutSection />
+      <FeatureSection />
+      <BrandSection />
+      <FAQSection />
+      <ContactSection />
     </div>
   );
 }

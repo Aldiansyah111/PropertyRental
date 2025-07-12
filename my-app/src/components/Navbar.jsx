@@ -17,12 +17,10 @@ export default function Navbar() {
       setWallet(accounts.length ? accounts[0] : null);
     };
 
-    // Pasang listener
     if (window.ethereum) {
       window.ethereum.on("accountsChanged", handleAccountsChanged);
     }
 
-    // Bersihkan listener saat unmount
     return () => {
       if (window.ethereum?.removeListener) {
         window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
@@ -33,6 +31,10 @@ export default function Navbar() {
   const handleConnect = async () => {
     const addr = await connectWallet();
     if (addr) setWallet(addr);
+  };
+
+  const handleDisconnect = () => {
+    setWallet(null); // Hanya hapus dari local state
   };
 
   const shortAddress = (addr) => {
@@ -60,22 +62,41 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Wallet */}
-        <div>
+        {/* Wallet / Auth */}
+        <div className="flex items-center space-x-3">
           {wallet ? (
-            <button
-              className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium border border-green-300"
-              disabled
-            >
-              {shortAddress(wallet)}
-            </button>
+            <>
+              <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium border border-green-300">
+                {shortAddress(wallet)}
+              </span>
+              <button
+                onClick={handleDisconnect}
+                className="text-sm px-4 py-2 rounded-full font-medium text-red-600 hover:text-red-800 border border-red-300 bg-red-50"
+              >
+                Disconnect
+              </button>
+            </>
           ) : (
-            <button
-              onClick={handleConnect}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-full text-sm font-medium"
-            >
-              Connect Wallet
-            </button>
+            <>
+              <Link
+                to="/login"
+                className="text-sm text-gray-700 hover:text-indigo-600 font-medium"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="text-sm text-gray-700 hover:text-indigo-600 font-medium"
+              >
+                Register
+              </Link>
+              <button
+                onClick={handleConnect}
+                className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-full text-sm font-medium"
+              >
+                Connect Wallet
+              </button>
+            </>
           )}
         </div>
       </div>
