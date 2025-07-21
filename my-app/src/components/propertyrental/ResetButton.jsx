@@ -36,7 +36,7 @@ export default function ResetButton({ propertyId }) {
       <button
         onClick={handleReset}
         disabled={loading}
-        className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md transition"
+        className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md transition cursor-pointer"
       >
         {loading ? "Memproses..." : "Reset Sewa (Owner)"}
       </button>

@@ -2,50 +2,51 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "Bagaimana cara kerja sistem blockchain di platform ini?",
-    answer: "Setiap transaksi disimpan dalam kontrak pintar di blockchain untuk memastikan transparansi dan keamanan."
+    question: "How does the blockchain system work on this platform?",
+    answer: "Each transaction is recorded in a smart contract on the blockchain to ensure full transparency and security."
   },
   {
-    question: "Apakah saya perlu menggunakan kripto untuk menyewa?",
-    answer: "Tidak, kami menyediakan gateway pembayaran fiat dan kripto sesuai kebutuhan pengguna."
+    question: "Do I need to use cryptocurrency to rent a property?",
+    answer: "No, we support both fiat and crypto payments to suit different user preferences."
   },
   {
-    question: "Apakah platform ini gratis digunakan?",
-    answer: "Ya, pengguna dapat menjelajahi dan mencari properti tanpa biaya. Biaya hanya dikenakan saat transaksi."
+    question: "Is the platform free to use?",
+    answer: "Yes, browsing and searching properties is completely free. Fees apply only during actual transactions."
   },
   {
-    question: "Bagaimana keamanan data pengguna dijamin?",
-    answer: "Semua data dienkripsi dan disimpan secara terdesentralisasi untuk meminimalisir risiko kebocoran data."
+    question: "How is user data kept secure?",
+    answer: "All data is encrypted and stored in a decentralized system to minimize any risk of breaches."
   },
   {
-    question: "Apakah saya bisa membatalkan penyewaan setelah transaksi?",
-    answer: "Tergantung pada kebijakan masing-masing pemilik properti yang telah disetujui dalam kontrak pintar."
+    question: "Can I cancel a rental after the transaction is completed?",
+    answer: "It depends on the specific cancellation policy agreed upon in the smart contract with the property owner."
   },
   {
-    question: "Bagaimana proses verifikasi properti dilakukan?",
-    answer: "Kami memiliki tim verifikasi dan juga dukungan sistem rating dari pengguna untuk menjaga kualitas listing."
+    question: "How are properties verified?",
+    answer: "We have a dedicated verification team and a user rating system to maintain listing quality and trust."
   },
   {
-    question: "Apa saja metode pembayaran yang tersedia?",
-    answer: "Kami menerima transfer bank, e-wallet, dan kripto utama seperti USDT, ETH, dan BTC."
+    question: "What payment methods are supported?",
+    answer: "We accept bank transfers, e-wallets, and major cryptocurrencies like USDT, ETH, and BTC."
   },
   {
-    question: "Bisakah saya menyewakan properti saya di platform ini?",
-    answer: "Tentu! Anda bisa mendaftar sebagai pemilik dan mulai menyewakan setelah proses verifikasi selesai."
+    question: "Can I list my own property on this platform?",
+    answer: "Absolutely! You can register as a property owner and start renting out after the verification process."
   },
   {
-    question: "Apakah layanan tersedia secara internasional?",
-    answer: "Saat ini kami berfokus di Asia Tenggara, namun ekspansi global sedang dalam rencana."
+    question: "Is the service available internationally?",
+    answer: "We currently operate in Southeast Asia, but international expansion is already in progress."
   },
   {
-    question: "Bagaimana jika terjadi perselisihan antara penyewa dan pemilik?",
-    answer: "Kami menyediakan sistem penyelesaian sengketa berbasis smart contract dan juga tim mediasi."
+    question: "What happens if there's a dispute between tenant and owner?",
+    answer: "We offer a smart contract–based dispute resolution system, supported by our dedicated mediation team."
   },
   {
-    question: "Apakah saya bisa menyimpan properti favorit?",
-    answer: "Ya, pengguna bisa menyimpan listing favorit untuk diakses kembali nanti dengan akun terdaftar."
+    question: "Can I save favorite properties for later?",
+    answer: "Yes, registered users can bookmark listings to revisit them anytime through their personal dashboard."
   }
 ];
+
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);

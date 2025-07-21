@@ -12,7 +12,7 @@ export default function RemainingTime({ propertyId }) {
         const time = await getRemainingTime(propertyId);
         setTimeLeft(time);
       } catch (err) {
-        console.error("Gagal ambil sisa waktu:", err);
+        console.error("Failed to fetch remaining time:", err);
         setTimeLeft(0);
       }
     };
@@ -24,17 +24,17 @@ export default function RemainingTime({ propertyId }) {
   }, [propertyId]);
 
   const format = (sec) => {
-    if (sec === 0) return "Tidak ada";
+    if (sec === 0) return "None";
     const h = Math.floor(sec / 3600);
     const m = Math.floor((sec % 3600) / 60);
     const s = sec % 60;
-    return `${h} jam ${m} menit ${s} detik`;
+    return `${h}h ${m}m ${s}s`;
   };
 
   return (
     <div className="mt-4 text-sm text-gray-700 border rounded-md p-4 bg-gray-50">
       <div className="flex items-center gap-2">
-        <span className="font-medium">Sisa Waktu Sewa:</span>
+        <span className="font-medium">Remaining Rent Time:</span>
         {timeLeft === null ? (
           <span className="text-gray-400">Loading...</span>
         ) : (

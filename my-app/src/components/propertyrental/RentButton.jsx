@@ -24,8 +24,8 @@ export default function RentButton({ propertyId, onRefresh }) {
         setError("");
       }
     } catch (err) {
-      console.error("Gagal ambil data properti:", err);
-      setError("Gagal ambil data properti.");
+      console.error("Failed to fetch property data:", err);
+      setError("Failed to fetch property data.");
     }
   };
 
@@ -40,17 +40,16 @@ export default function RentButton({ propertyId, onRefresh }) {
       if (result.success) {
         await fetchData();
         if (onRefresh) onRefresh();
-        setSuccessMessage("Sewa berhasil!");
+        setSuccessMessage("Successfully rented!");
         setError("");
 
-        // Otomatis hilangkan pesan sukses setelah 3 detik
-        setTimeout(() => setSuccessMessage(""), 3000);
+        setTimeout(() => setSuccessMessage(""), 3000); // Auto-hide after 3 sec
       } else {
-        setError("Transaksi gagal.");
+        setError("Transaction failed.");
       }
     } catch (err) {
-      console.error("Gagal menyewa:", err);
-      setError("Gagal menyewa properti.");
+      console.error("Failed to rent:", err);
+      setError("Failed to rent the property.");
     }
     setLoading(false);
   };
@@ -60,30 +59,29 @@ export default function RentButton({ propertyId, onRefresh }) {
       {status ? (
         <div className="flex items-center gap-2">
           <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
-            Properti sedang disewa
+            This property is currently rented
           </span>
         </div>
       ) : (
         <button
           onClick={handleRent}
           disabled={loading}
-          className={`w-full px-6 py-2 rounded-md transition font-medium text-white ${loading
-            ? "bg-indigo-400 cursor-not-allowed"
-            : "bg-indigo-600 hover:bg-indigo-700"
+          className={`w-full px-6 py-2 rounded-md cursor-pointer transition font-medium text-white ${
+            loading
+              ? "bg-indigo-400 cursor-not-allowed"
+              : "bg-indigo-600 hover:bg-indigo-700"
           }`}
         >
-          {loading ? "Memproses..." : `Sewa Sekarang (${rentPrice} ETH)`}
+          {loading ? "Processing..." : `Rent Now (${rentPrice} ETH)`}
         </button>
       )}
 
-      {/* ✅ Success Message */}
       {successMessage && (
         <p className="text-sm text-green-600 border border-green-200 rounded-md px-3 py-2 bg-green-50">
           {successMessage}
         </p>
       )}
 
-      {/* ⚠️ Error Message */}
       {error && (
         <p className="text-sm text-red-500 border border-red-200 rounded-md px-3 py-2 bg-red-50">
           {error}
